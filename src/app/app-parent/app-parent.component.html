@@ -3,14 +3,12 @@
 
   <div>
     <h1>Parent</h1>
-    <div>
-      <label>Account</label>
-      <label>has value</label>
-    </div>
+    <label>Account {{reference}}
+      <br> has a balance of {{currency}} {{balance}} </label>
   </div>
 
   <div>
-    <app-app-child></app-app-child>
+    <app-app-child [accountInformation]="accountInformation" (change)="acountChange($event)"></app-app-child>
   </div>
 </div>
 

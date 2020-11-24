@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AccountInformation} from "../account-information";
+import {AccountService} from "../account.service";
 
 @Component({
   selector: 'app-app-parent',
@@ -7,17 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppParentComponent implements OnInit {
 
+  accountSelected: number;
+  reference: string;
+  currency: string;
+  balance: number;
+  accountInformation: AccountInformation[];
 
-  constructor() { }
-
-  valueEmittedFromChildComponent: string = "";
-
-  parentEventHandlerFunction(valueEmitted){
-    this.valueEmittedFromChildComponent = valueEmitted;
-    console.log("aaa"+valueEmitted);
-  }
+  constructor(private service: AccountService) { }
 
   ngOnInit(): void {
+    this.accountInformation = this.service.getAccount();
   }
 
+
+  acountChange(event) {
+    this.accountSelected = event.target.value;
+    this.reference = this.accountInformation[this.accountSelected].reference;
+    this.currency = this.accountInformation[this.accountSelected].totals[0].currency;
+    this.balance = this.accountInformation[this.accountSelected].totals[0].balance;
+  }
 }
