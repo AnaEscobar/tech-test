@@ -1,0 +1,13 @@
+
+
+<h1>Component</h1>
+<form [formGroup]="accountForm" >
+
+
+  <label for="displayName">Select an account</label>
+  <select id="displayName" class="form-control" #mySelect (click)="selectAccount(mySelect.value)"
+          formControlName="displayName" required >
+    <option *ngFor="let p of accountInformation" [value]="p.id">{{p.displayName}} </option>
+  </select>
+
+</form>

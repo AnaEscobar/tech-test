@@ -1,0 +1,16 @@
+.container {
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+
+  div {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    app-app-child {
+      background: #ff435b;
+      color: white;
+    }
+  }
+}
